@@ -1,0 +1,180 @@
+.swiper {
+    min-width: 95vw;
+    height: 40vh;
+    overflow: hidden;
+    .swiper-slide {
+        padding: 0% 6%;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: move; /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab
+    }
+    .swiper-slide:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+    }
+
+    img {
+        max-height: 80%;
+    }
+    p{
+        max-width: 50%;
+    }
+}
+.mobile-swiper {
+    display: none;
+}
+
+.description_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vh;
+
+    h2 {
+        color: white;
+        background-color: rgb(9, 48, 121);
+        text-align: center;
+        width: 100vw;
+        margin: 2.5vh 0px;
+        padding: 5pt;
+    }
+
+    p {
+        max-width: 60vw;
+        font-size: 1.5rem;
+    }
+}
+
+.services_section{
+    height: 450px;
+    margin-bottom: 3vh;
+
+    .section_inner{
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        .service_left, .service_mid, .service_right{
+            position: absolute;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: min-width 0.2s;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            img{
+                max-height: 400px;
+                aspect-ratio: 1.5/1;
+                object-fit: cover;
+                transition: filter 0.2s, aspect-ratio 0.2s, transform 0.2s, box-shadow 0.2s;
+                border-radius: 25px;
+                box-shadow: 0px 0px 2px black;
+            }
+            p {
+                position: absolute;
+                z-index: 10;
+                color: rgba(255, 255, 255, 0);
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-weight: bolder;
+                font-size: 2rem;
+                transition: color 0.4s;
+            }
+        }
+        .service_left:hover, .service_mid:hover, .service_right:hover{
+            cursor: pointer;
+            img {
+                aspect-ratio: 16/9;
+                transform: scale(1.02);
+                filter: brightness(60%);
+                box-shadow: 0px 0px 10px black;
+            }
+            p {
+                color: white
+            }
+        }
+        .service_left{
+            transform: translateX(-75%);
+            transition: transform 0.2s;
+        }
+        .service_left:hover{
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .service_mid{
+            z-index: 1;
+        }
+        .service_right{
+            transform: translateX(75%);
+            transition: transform 0.2s;
+        }
+        .service_right:hover{
+            transform: translateX(50%);
+            z-index: 2;
+        }
+    }
+}
+
+@media(orientation: portrait) {
+    .services_section {
+        display: none;
+    }
+
+    .swiper {
+        height: auto;
+        margin-top: 2.5vh;
+        img {
+            max-width: 35vw;
+        }
+    }
+    .mobile-swiper {
+        display: flex;
+        overflow: hidden;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        .swiper-slide {
+            overflow-x: hidden;
+            a {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                p {
+                    position: absolute;
+                    z-index: 10;
+                    color: white;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-size: 6rem;
+                }
+                img{
+                    aspect-ratio: 1.5/1;
+                    object-fit: cover;
+                    filter: brightness(0.5);
+                    border-radius: 25px;
+                }
+            }
+        }
+    }
+
+    .description_section {
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            max-width: 90vw;
+            font-size: 1.5rem;
+        }
+    }
+}
