@@ -7,29 +7,9 @@
         <link rel="stylesheet" href="pages.css">
         <link rel="stylesheet" href="contacts/contacts.css">
         <script defer="" src="pages.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-        <script type="text/javascript">
-            (function() {
-                // https://dashboard.emailjs.com/admin/account
-                emailjs.init({
-                    publicKey: "p1HGvVHRzFdmFGHQ0",
-                });
-            })();
-        </script>
-        <script type="text/javascript">
-            window.onload = function() {
-                document.getElementById('contact-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    // these IDs from the previous steps
-                    emailjs.sendForm('service_cr6061d', 'contact_form', this)
-                    .then(() => {
-                        console.log('SUCCESS!');
-                    }, (error) => {
-                        console.log('FAILED...', error);
-                    });
-                });
-            }
-        </script>
+        <script>window.onload = function() {document.getElementById("contact-form").reset()}</script>
+        <script src="/pages/contacts/contacts.js" async></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
     <body>
@@ -65,16 +45,59 @@
             </button>
         </nav>
 
-        <form id="contact-form">
-            <!-- To simplify the tutorial, the value is static. -->
-            <input type="hidden" name="contact_number" value = >
-            <label>Name</label>
-            <input type="text" name="user_name">
-            <label>Email</label>
-            <input type="email" name="user_email">
-            <label>Message</label>
-            <textarea name="message"></textarea>
-            <input type="submit" value="Send">
+        <section class="form-instructions">
+            <p>
+                TEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXTTEXT
+            </p>
+        </section>
+
+        <form id="contact-form" action="https://formly.email/submit" method="POST">
+            <input type="hidden" name="access_key" value="aafcfc647d4c47bcb45687e7b53ef57f">
+            <input type="hidden" name="redirect" value="https://maxhealthstudios.com">
+            
+            <!-- form fields -->
+            <input type="text" name="name" id="name" placeholder="Your name" required>
+            <input type="email" name="replyto" id="email" placeholder="Your email" required>
+            <textarea name="message" id="message" rows="4" placeholder="Your message" required></textarea>
+            <!-- Google reCAPTCHA -->
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+            <button type="submit">SUBMIT</button>
         </form>
+
+        <footer>
+            <div class="shell">
+                <div class="footer_inner">
+                    <div class="left_footer">
+                        <a href="services.html">Services</a>
+                        <a href="catalog.html">Repair Catalog</a>
+                        <a href="policy.html">Company Policy</a>
+                        <a href="about.html">About Us</a>
+                        <a href="contacts.html">Contacts</a>
+                    </div>
+                    <div class="mid_footer">
+                        <img src="/assets/square logo.png">
+                    </div>
+                    <div class="right_footer">
+                        <a href="tel:+359000000000">
+                            +359000000000
+                        </a>
+                        
+                        <a href="mailto:contacts@airgroup.co.uk">
+                            contacts@airgroup.co.uk
+                        </a>
+
+                        <p id="address">
+                            123 Whatever Street<br>
+                            London<br>
+                            B17 7LP<br>
+                            United Kingdom
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright_section">
+                ALL RIGHTS RESERVED
+            </div>
+        </footer>
     </body>
 </html>
